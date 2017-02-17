@@ -13,9 +13,9 @@ def get_function_for(bv, address):
 #check if xref is a call
 def is_xref_a_call(bv, xref):
     function = xref.function
-    low_level_il = function.get_low_level_il_at(bv.platform.arch, xref.address)
+    low_level_il = function.get_low_level_il_at(xref.address, bv.platform.arch)
     il = function.low_level_il[low_level_il]
-    return il.operation_name == "LLIL_CALL"
+    return il.operation == "LLIL_CALL"
 
 
 def get_path_recursive(bv, function, db):
